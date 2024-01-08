@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LibroController;
+use App\Models\Autor;
+use App\Models\Libro;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +18,17 @@ use App\Http\Controllers\LibroController;
 
 Route::get('/', function(){
     return view('inicio');
+});
+
+Route::get('relacionPrueba', function(){
+    $autor = Autor::findOrFail(1);
+    $libro = new Libro();
+    $libro->titulo = "Libro de prueba " . rand();
+    $libro->editorial = "Editorial de prueba";
+    $libro->precio = 5;
+    $libro->autor()->associate($autor);
+    $libro->save();
+    return redirect()->route('libros.index');
 });
 
 Route::resource('libros', LibroController::class)

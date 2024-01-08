@@ -14,7 +14,7 @@ class LibroController extends Controller
      */
     public function index()
     {
-        $libros = Libro::get();
+        $libros = Libro::with('autor')->get();
         return view('libros.index', compact('libros'));
     }
 
