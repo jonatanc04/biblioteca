@@ -15,15 +15,11 @@ class LibrosSeeder extends Seeder
      */
     public function run()
     {
-        $autor = new Autor();
-        $autor->nombre = "Juan Seeder";
-        $autor->nacimiento = 1960;
-        $autor->save();
-        $libro = new Libro();
-        $libro->titulo = "El libro del Seeder";
-        $libro->editorial = "Seeder S.A.";
-        $libro->precio = 10;
-        $libro->autor()->associate($autor);
-        $libro->save();
+        $autores = Autor::all();
+        $autores->each(function($autor) {
+            Libro::factory()->count(2)->create([
+                'autor_id' => $autor->id
+            ]);
+        });
     }
 }
