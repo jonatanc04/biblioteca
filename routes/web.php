@@ -32,4 +32,4 @@ Route::get('relacionPrueba', function(){
 });
 
 Route::resource('libros', LibroController::class)
-->only(['index','show','create','edit']);
+->only(['index','show','create','edit','store']);
