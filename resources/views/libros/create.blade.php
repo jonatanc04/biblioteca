@@ -9,17 +9,32 @@
         <div class="form-group">
         <label for="titulo">Título:</label>
         <input type="text" class="form-control" name="titulo"
-        id="titulo">
+        id="titulo" value="{{old('titulo')}}">
+        @if ($errors->has('titulo'))
+            <div class="text-danger">
+                {{ $errors->first('titulo') }}
+            </div>
+        @endif
         </div>
         <div class="form-group">
         <label for="editorial">Editorial:</label>
         <input type="text" class="form-control" name="editorial"
-        id="editorial">
+        id="editorial" value="{{old('editorial')}}">
+        @if ($errors->has('editorial'))
+            <div class="text-danger">
+                {{ $errors->first('editorial') }}
+            </div>
+        @endif
         </div>
         <div class="form-group">
         <label for="precio">Precio:</label>
         <input type="text" class="form-control" name="precio"
-        id="precio">
+        id="precio" value="{{old('precio')}}">
+        @if ($errors->has('precio'))
+            <div class="text-danger">
+                {{ $errors->first('precio') }}
+            </div>
+        @endif
         </div>
         <div class="form-group">
         <label for="autor">Autor:</label>
